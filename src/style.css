@@ -1,1 +1,239 @@
+@import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Urbanist:wght@400;500;700&display=swap");
+
 @import "tailwindcss";
+
+:root {
+	--bg: #0f141d;
+	--panel: #151d2b;
+	--panel-soft: #1c2738;
+	--text: #ecf3ff;
+	--muted: #99abc6;
+	--accent: #ff7a18;
+	--accent-soft: #ffc46b;
+	--danger: #ff4d61;
+	--ok: #33d096;
+	--shadow: 0 20px 45px rgba(0, 0, 0, 0.35);
+}
+
+* {
+	box-sizing: border-box;
+}
+
+body {
+	margin: 0;
+	min-height: 100vh;
+	font-family: "Urbanist", sans-serif;
+	color: var(--text);
+	background:
+		radial-gradient(circle at 20% 0%, rgba(255, 122, 24, 0.2), transparent 42%),
+		radial-gradient(circle at 100% 100%, rgba(51, 208, 150, 0.14), transparent 38%),
+		linear-gradient(160deg, #090d15 0%, var(--bg) 45%, #182536 100%);
+}
+
+.cinema-shell {
+	width: min(1100px, 92vw);
+	margin: 2rem auto;
+	display: grid;
+	gap: 1rem;
+}
+
+.hero-card,
+.metric-card,
+.seating-card {
+	border: 1px solid rgba(255, 255, 255, 0.09);
+	border-radius: 20px;
+	background: linear-gradient(165deg, rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0.02));
+	box-shadow: var(--shadow);
+	backdrop-filter: blur(10px);
+}
+
+.hero-card {
+	padding: 1.5rem;
+}
+
+.eyebrow {
+	margin: 0;
+	color: var(--accent-soft);
+	letter-spacing: 0.12em;
+	text-transform: uppercase;
+	font-size: 0.8rem;
+}
+
+h1 {
+	margin: 0.3rem 0;
+	font-family: "Bebas Neue", sans-serif;
+	font-size: clamp(2.2rem, 5vw, 3.8rem);
+	letter-spacing: 0.04em;
+}
+
+.subcopy {
+	margin: 0;
+	color: var(--muted);
+}
+
+.dashboard-grid {
+	display: grid;
+	gap: 1rem;
+	grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.metric-card {
+	padding: 1.1rem 1.2rem;
+}
+
+.metric-card h2 {
+	margin: 0;
+	font-size: 0.95rem;
+	font-weight: 500;
+	color: var(--muted);
+}
+
+.metric-number {
+	margin: 0.4rem 0 0;
+	font-family: "Bebas Neue", sans-serif;
+	font-size: clamp(2rem, 5vw, 3.2rem);
+	color: var(--accent-soft);
+}
+
+.message-card {
+	grid-column: 1 / -1;
+}
+
+.message-card p {
+	margin: 0.45rem 0 0;
+}
+
+.adjacent-message {
+	color: var(--accent-soft);
+}
+
+.legend-row,
+.controls-row {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 0.7rem;
+	align-items: center;
+}
+
+.legend-item {
+	display: inline-flex;
+	align-items: center;
+	gap: 0.45rem;
+	color: var(--muted);
+	font-size: 0.9rem;
+}
+
+.legend-dot {
+	width: 0.85rem;
+	height: 0.85rem;
+	border-radius: 50%;
+	display: inline-block;
+}
+
+.legend-dot.available {
+	background: var(--ok);
+}
+
+.legend-dot.occupied {
+	background: var(--danger);
+}
+
+button {
+	border: 0;
+	border-radius: 999px;
+	padding: 0.65rem 1rem;
+	font: inherit;
+	color: #111;
+	background: linear-gradient(120deg, var(--accent), var(--accent-soft));
+	cursor: pointer;
+	transition: transform 0.2s ease, filter 0.2s ease;
+}
+
+button:hover {
+	transform: translateY(-2px);
+	filter: brightness(1.04);
+}
+
+button.ghost {
+	color: var(--text);
+	background: transparent;
+	border: 1px solid rgba(255, 255, 255, 0.26);
+}
+
+.seating-card {
+	padding: 1rem;
+}
+
+.screen {
+	width: min(420px, 70vw);
+	margin: 0 auto 1rem;
+	text-align: center;
+	background: linear-gradient(180deg, rgba(236, 243, 255, 0.95), rgba(236, 243, 255, 0.55));
+	color: #1f2a3f;
+	border-radius: 40px 40px 18px 18px;
+	letter-spacing: 0.2em;
+	font-size: 0.78rem;
+	padding: 0.5rem;
+	box-shadow: 0 12px 26px rgba(236, 243, 255, 0.28);
+}
+
+.seat-grid {
+	display: grid;
+	gap: 0.45rem;
+	justify-content: center;
+}
+
+.seat-header,
+.seat-row-label,
+.seat {
+	width: 2rem;
+	height: 2rem;
+	display: grid;
+	place-items: center;
+	font-size: 0.8rem;
+	border-radius: 7px;
+}
+
+.seat-header,
+.seat-row-label {
+	color: var(--muted);
+	background: rgba(255, 255, 255, 0.06);
+}
+
+.seat {
+	border: 1px solid transparent;
+	color: #0a0d14;
+	font-weight: 700;
+}
+
+.seat.available {
+	background: color-mix(in srgb, var(--ok) 85%, white 15%);
+}
+
+.seat.available:hover {
+	transform: translateY(-1px);
+	cursor: pointer;
+}
+
+.seat.occupied {
+	color: white;
+	background: color-mix(in srgb, var(--danger) 78%, black 22%);
+}
+
+@media (max-width: 720px) {
+	.cinema-shell {
+		margin: 1rem auto;
+	}
+
+	.dashboard-grid {
+		grid-template-columns: 1fr;
+	}
+
+	.seat-header,
+	.seat-row-label,
+	.seat {
+		width: 1.7rem;
+		height: 1.7rem;
+		font-size: 0.72rem;
+	}
+}

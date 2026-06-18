@@ -3,22 +3,46 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Hello World with Typescript</title>
+    <title>NovaCine Seat Manager</title>
   </head>
-  <body class="min-h-screen bg-slate-100 text-slate-900">
-    <main class="mx-auto flex min-h-screen max-w-2xl flex-col items-center justify-center gap-6 p-6">
-      <h1 class="text-4xl font-bold tracking-tight">Hello World with Typescript</h1>
+  <body>
+    <main class="cinema-shell">
+      <section class="hero-card">
+        <p class="eyebrow">Cinema Operations Dashboard</p>
+        <h1>NovaCine Evening Screening</h1>
+        <p id="app" class="subcopy">Loading seat data...</p>
+      </section>
 
-      <section class="w-full max-w-md overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm">
-        <img
-          src="/rigo-baby.jpg"
-          alt="Hello Rigo"
-          class="h-64 w-full bg-slate-50 object-contain p-2"
-        />
-        <div class="p-5">
-          <h2 class="text-xl font-semibold text-slate-900">Hello Rigo</h2>
-          <p id="app" class="mt-2 text-sm text-slate-600"></p>
-        </div>
+      <section class="dashboard-grid">
+        <article class="metric-card">
+          <h2>Occupied</h2>
+          <p id="occupied-count" class="metric-number">0</p>
+        </article>
+        <article class="metric-card">
+          <h2>Available</h2>
+          <p id="available-count" class="metric-number">0</p>
+        </article>
+        <article class="metric-card message-card">
+          <h2>System Message</h2>
+          <p id="status-message">Select any available seat to reserve it.</p>
+          <p id="adjacent-result" class="adjacent-message"></p>
+        </article>
+      </section>
+
+      <section class="legend-row" aria-label="Seat legend">
+        <span class="legend-item"><i class="legend-dot available"></i> Available (L)</span>
+        <span class="legend-item"><i class="legend-dot occupied"></i> Occupied (X)</span>
+      </section>
+
+      <section class="controls-row">
+        <button id="find-adjacent-btn" type="button">Find Adjacent Seats</button>
+        <button id="reserve-adjacent-btn" type="button">Reserve Suggested Pair</button>
+        <button id="reset-room-btn" type="button" class="ghost">Reset Room</button>
+      </section>
+
+      <section class="seating-card" aria-label="Cinema seating layout">
+        <div class="screen">SCREEN</div>
+        <div id="seat-grid" class="seat-grid"></div>
       </section>
     </main>
     <script type="module" src="/src/main.ts"></script>
